@@ -78,14 +78,9 @@ src/main/java/gastro/
 
 
 ```
- GASTRO-RESERVIERUNGS-SYSTEM - Was macht das Programm?
-
 
 HAUPTZIEL
 ---------
-Ein Konsolenprogramm zur strukturierten Verwaltung von Tischen, Kunden und 
-Reservierungen für lokale Gastronomiebetriebe. 
-Das System löst manuelle Reservierungsbücher ab und verhindert aktiv Fehlbuchungen.
 
 Man kann über ein Menü in der Konsole Daten:
   - anzeigen (Auslastung, Kundenkartei)
