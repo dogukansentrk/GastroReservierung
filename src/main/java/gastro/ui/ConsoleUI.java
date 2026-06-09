@@ -21,7 +21,7 @@ public class ConsoleUI {
     }
 
     public void starten() {
-        System.out.println("   Willkommen im Gastro-Reservierungssystem  ");
+        System.out.println("Willkommen im Gastro-Reservierungssystem  ");
 
         boolean laufen = true;
         while (laufen) {
@@ -52,7 +52,7 @@ public class ConsoleUI {
                     laufen = false;
                     break;
                 default:
-                    System.out.println("[!] Ungültige Auswahl. Bitte erneut versuchen.");
+                    System.out.println("Ungültige Auswahl. Bitte erneut versuchen.");
             }
         }
     }
@@ -60,40 +60,38 @@ public class ConsoleUI {
 
     private void hauptmenuAnzeigen() {
         System.out.println("  HAUPTMENÜ");
-        System.out.println("  [1] Tisch anlegen");
-        System.out.println("  [2] Alle Tische anzeigen");
-        System.out.println("  [3] Kunden anlegen");
-        System.out.println("  [4] Alle Kunden anzeigen");
-        System.out.println("  [5] Reservierung erstellen");
-        System.out.println("  [6] Alle Reservierungen anzeigen");
-        System.out.println("  [0] Beenden");
-        System.out.println("----------------------------------------------");
+        System.out.println("   1 Tisch anlegen");
+        System.out.println("   2 Alle Tische anzeigen");
+        System.out.println("   3 Kunden anlegen");
+        System.out.println("   4 Alle Kunden anzeigen");
+        System.out.println("   5 Reservierung erstellen");
+        System.out.println("   6 Alle Reservierungen anzeigen");
+        System.out.println("   0 Beenden");
     }
 
 
     private void tischAnlegen() {
-        System.out.println("\n--- Neuen Tisch anlegen ---");
+        System.out.println("\n Neuen Tisch anlegen");
         int nummer = eingabeInt("Tischnummer: ");
-        int sitze   = eingabeInt("Anzahl Sitzplätze: ");
+        int sitze = eingabeInt("Anzahl Sitzplätze: ");
         System.out.print("Bereich (z.B. Innenbereich / Terrasse): ");
         String bereich = scanner.nextLine().trim();
 
         if (bereich.isEmpty()) {
-            System.out.println("[!] Bereich darf nicht leer sein.");
+            System.out.println("Bereich darf nicht leer sein.");
             return;
         }
 
         try {
             service.tischAnlegen(nummer, sitze, bereich);
-            System.out.println("[✓] Tisch Nr. " + nummer + " erfolgreich angelegt.");
+            System.out.println("Tisch Nr. " + nummer + " erfolgreich angelegt.");
         } catch (SQLException e) {
-            // Häufiger Fall: Tischnummer bereits vorhanden (UNIQUE-Constraint)
-            System.out.println("[!] Fehler: " + e.getMessage());
+            System.out.println("Fehler: " + e.getMessage());
         }
     }
 
     private void alleTischeAnzeigen() {
-        System.out.println("\n--- Alle Tische ---");
+        System.out.println("\n Alle Tische");
         try {
             List<Tisch> tische = service.alleTische();
             if (tische.isEmpty()) {
@@ -102,33 +100,33 @@ public class ConsoleUI {
                 tische.forEach(System.out::println);
             }
         } catch (SQLException e) {
-            System.out.println("[!] Datenbankfehler: " + e.getMessage());
+            System.out.println("Datenbankfehler: " + e.getMessage());
         }
     }
 
 
     private void kundeAnlegen() {
-        System.out.println("\n--- Neuen Kunden anlegen ---");
+        System.out.println("\n Neuen Kunden anlegen");
         System.out.print("Name: ");
         String name = scanner.nextLine().trim();
         System.out.print("Telefonnummer: ");
         String telefon = scanner.nextLine().trim();
 
         if (name.isEmpty() || telefon.isEmpty()) {
-            System.out.println("[!] Name und Telefonnummer dürfen nicht leer sein.");
+            System.out.println("Name und Telefonnummer dürfen nicht leer sein");
             return;
         }
 
         try {
             service.kundeAnlegen(name, telefon);
-            System.out.println("[✓] Kunde \"" + name + "\" erfolgreich angelegt.");
+            System.out.println("Kunde \"" + name + "\" erfolgreich angelegt.");
         } catch (SQLException e) {
-            System.out.println("[!] Datenbankfehler: " + e.getMessage());
+            System.out.println("Datenbankfehler: " + e.getMessage());
         }
     }
 
     private void alleKundenAnzeigen() {
-        System.out.println("\n--- Alle Kunden ---");
+        System.out.println("\n Alle Kunden");
         try {
             List<Kunde> kunden = service.alleKunden();
             if (kunden.isEmpty()) {
@@ -137,12 +135,12 @@ public class ConsoleUI {
                 kunden.forEach(System.out::println);
             }
         } catch (SQLException e) {
-            System.out.println("[!] Datenbankfehler: " + e.getMessage());
+            System.out.println("Datenbankfehler: " + e.getMessage());
         }
     }
 
     private void reservierungErstellen() {
-        System.out.println("\n--- Neue Reservierung erstellen ---");
+        System.out.println("\n Neue Reservierung erstellen");
 
         try {
             System.out.println("  Verfügbare Tische:");
@@ -150,12 +148,12 @@ public class ConsoleUI {
             System.out.println("  Registrierte Kunden:");
             service.alleKunden().forEach(k -> System.out.println("    " + k));
         } catch (SQLException e) {
-            System.out.println("[!] Datenbankfehler beim Laden der Übersicht.");
+            System.out.println("Datenbankfehler beim Laden der Übersicht.");
             return;
         }
 
-        int tischId  = eingabeInt("Tisch-ID: ");
-        int kundeId  = eingabeInt("Kunden-ID: ");
+        int tischId = eingabeInt("Tisch-ID: ");
+        int kundeId = eingabeInt("Kunden-ID: ");
 
         System.out.print("Datum (YYYY-MM-DD, z.B. 2025-07-15): ");
         String datum = scanner.nextLine().trim();
@@ -164,28 +162,28 @@ public class ConsoleUI {
         String uhrzeit = scanner.nextLine().trim();
 
         if (!datum.matches("\\d{4}-\\d{2}-\\d{2}")) {
-            System.out.println("[!] Ungültiges Datumsformat. Bitte YYYY-MM-DD verwenden.");
+            System.out.println("Ungültiges Datumsformat. Bitte YYYY-MM-DD verwenden.");
             return;
         }
         if (!uhrzeit.matches("\\d{2}:\\d{2}")) {
-            System.out.println("[!] Ungültiges Uhrzeitformat. Bitte HH:MM verwenden.");
+            System.out.println("Ungültiges Uhrzeitformat. Bitte HH:MM verwenden.");
             return;
         }
 
         try {
             service.reservierungErstellen(tischId, kundeId, datum, uhrzeit);
-            System.out.println("[✓] Reservierung erfolgreich gespeichert.");
+            System.out.println("Reservierung erfolgreich gespeichert.");
         } catch (IllegalStateException e) {
-            System.out.println("[!] Konflikt: " + e.getMessage());
+            System.out.println("Konflikt: " + e.getMessage());
         } catch (IllegalArgumentException e) {
-            System.out.println("[!] Eingabefehler: " + e.getMessage());
+            System.out.println("Eingabefehler: " + e.getMessage());
         } catch (SQLException e) {
-            System.out.println("[!] Datenbankfehler: " + e.getMessage());
+            System.out.println("Datenbankfehler: " + e.getMessage());
         }
     }
 
     private void alleReservierungenAnzeigen() {
-        System.out.println("\n--- Alle Reservierungen ---");
+        System.out.println("\n Alle Reservierungen");
         try {
             List<Reservierung> reservierungen = service.alleReservierungen();
             if (reservierungen.isEmpty()) {
@@ -194,7 +192,7 @@ public class ConsoleUI {
                 reservierungen.forEach(System.out::println);
             }
         } catch (SQLException e) {
-            System.out.println("[!] Datenbankfehler: " + e.getMessage());
+            System.out.println("Datenbankfehler: " + e.getMessage());
         }
     }
 
@@ -205,7 +203,7 @@ public class ConsoleUI {
             try {
                 return Integer.parseInt(zeile);
             } catch (NumberFormatException e) {
-                System.out.println("[!] Ungültige Eingabe. Bitte eine ganze Zahl eingeben.");
+                System.out.println("Ungültige Eingabe. Bitte eine ganze Zahl eingeben.");
             }
         }
     }

@@ -18,7 +18,7 @@ public class Main {
             ui.starten();
 
         } catch (SQLException e) {
-            System.err.println("[FATAL] Datenbankverbindung fehlgeschlagen: " + e.getMessage());
+            System.err.println("Datenbankverbindung fehlgeschlagen: " + e.getMessage());
             e.printStackTrace();
         } finally {
             try {

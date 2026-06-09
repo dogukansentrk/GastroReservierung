@@ -1,6 +1,7 @@
 package gastro.dao;
 
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.jdbc.db.SqliteDatabaseType;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import gastro.model.Kunde;
@@ -16,7 +17,9 @@ public class DatabaseManager {
     private ConnectionSource connectionSource;
 
     private DatabaseManager() throws SQLException {
-        connectionSource = new JdbcConnectionSource(DATABASE_URL);
+        // HIER IST DIE WICHTIGE ÄNDERUNG:
+        connectionSource = new JdbcConnectionSource(DATABASE_URL, new SqliteDatabaseType());
+
         createTablesIfNotExist();
         System.out.println("[DB] Verbindung zur Datenbank hergestellt: gastro.db");
     }
