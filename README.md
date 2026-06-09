@@ -137,14 +137,6 @@ strukturiert, damit alles sauber getrennt ist.
       Nutzers entgegen und gibt Erfolgs- oder Fehlermeldungen auf dem Bildschirm aus.
 
 
-WELCHE TECHNIK WIRD VERWENDET?
-------------------------------
-  - Sprache:     Java (JDK 8+)
-  - Datenbank:   SQLite (lokale Datei, kein externer Server nötig)
-  - ORM:         ORMLite (verbindet Java-Klassen automatisch mit DB-Tabellen)
-  - Oberfläche:  Konsole (Text-Menü, Basis für spätere grafische UIs)
-
-
 SO STARTET MAN ES
 -----------------
   1. Projekt in der IDE (z.B. IntelliJ) öffnen.
