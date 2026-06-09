@@ -76,10 +76,10 @@ src/main/java/gastro/
 └── ui/
     └── ConsoleUI.java
 
+
 ```
-========================================
  GASTRO-RESERVIERUNGS-SYSTEM - Was macht das Programm?
-========================================
+
 
 HAUPTZIEL
 ---------
@@ -114,7 +114,7 @@ sondern merkt sich nur die ID des verknüpften Kunden und die ID des verknüpfte
 
 WOZU SIND DIE KLASSEN DA? (Projektstruktur)
 -------------------------------------------
-Das Projekt ist nach dem MVC/DAO-Muster (Model-View-Controller / Data Access Object) 
+Das Projekt ist nach dem DAO-Muster (Data Access Object) 
 strukturiert, damit alles sauber getrennt ist.
 
   * Main.java
