@@ -17,7 +17,6 @@ public class DatabaseManager {
     private ConnectionSource connectionSource;
 
     private DatabaseManager() throws SQLException {
-        // HIER IST DIE WICHTIGE ÄNDERUNG:
         connectionSource = new JdbcConnectionSource(DATABASE_URL, new SqliteDatabaseType());
 
         createTablesIfNotExist();
